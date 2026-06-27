@@ -2,6 +2,7 @@
 
 #include "../sequence/Exceptions.hpp"
 #include "../sequence/MutableArraySequence.hpp"
+#include "Complex.hpp"
 #include "Matrix.hpp"
 
 
@@ -156,6 +157,20 @@ double RectangularMatrix<T>::norm() const {
     for (int i = 0; i < this->rows; i++) {
         for (int j = 0; j < this->cols; j++) {
             double value = static_cast<double>(storage[i][j]);  // Необходимо, чтобы тип T был приводимым к double
+            result += value * value;
+        }
+    }
+
+    return std::sqrt(result);
+}
+
+template <>
+double RectangularMatrix<Complex>::norm() const {
+    double result = 0.0;
+
+    for (int i = 0; i < this->rows; i++) {
+        for (int j = 0; j < this->cols; j++) {
+            double value = storage[i][j].Modulus();  // Отдельная реализация для типа Complex
             result += value * value;
         }
     }

@@ -30,13 +30,6 @@ public:
         return Complex(this->re * other.re - this->im * other.im, this->re * other.im + this->im * other.re);
     }
 
-    Complex& operator=(const Complex& other) {
-        this->re = other.re;
-        this->im = other.im;
-
-        return *this;
-    }
-
     Complex& operator+=(const Complex& other) {
         this->re += other.re;
         this->im += other.im;

@@ -146,3 +146,74 @@ inline std::string ReadString(const std::string& text) {
 
     return s;
 }
+
+inline int func_inc(int x) {
+    return x + 1;
+}
+inline int func_sqr(int x) {
+    return x * x;
+}
+inline int func_abs(int x) {
+    return (x < 0) ? -x : x;
+}
+
+inline Function ReadFunction(const std::string& text) {
+    std::cout << text << '\n';
+    std::cout << "1) f(x) = x + 1\n";
+    std::cout << "2) f(x) = x * x\n";
+    std::cout << "3) f(x) = |x|\n";
+
+    int func_type = ReadInt("Выберите функцию (1-3): ");
+
+    while (func_type < 1 || func_type > 3) {
+        std::cout << "Некорректный ввод. Введите номер функции от 1 до 3\n";
+        func_type = ReadInt("Выберите функцию (1-3): ");
+    }
+
+    if (func_type == 1) {
+        return Function(&func_inc, "Инкремент");
+    } else if (func_type == 2) {
+        return Function(&func_sqr, "Квадрат");
+    } else {
+        return Function(&func_abs, "Модуль");
+    }
+}
+
+inline Student ReadStudent(const std::string& text) {
+    std::cout << text << '\n';
+
+    int series = ReadInt("Серия паспорта: ");
+    int number = ReadInt("Номер паспорта: ");
+    PersonID student_id{series, number};
+
+    std::string first_name = ReadString("Имя: ");
+    std::string middle_name = ReadString("Отчество: ");
+    std::string last_name = ReadString("Фамилия: ");
+
+    int age = ReadInt("Возраст: ");
+
+    int group_number = ReadInt("Номер группы: ");
+    int admission_year = ReadInt("Год поступления: ");
+    double average_grade = ReadDouble("Средняя оценка: ");
+
+    return Student(student_id, first_name, middle_name, last_name, age, group_number, admission_year, average_grade);
+}
+
+inline Teacher ReadTeacher(const std::string& text) {
+    std::cout << text << "\n";
+
+    int series = ReadInt("Серия паспорта: ");
+    int number = ReadInt("Номер паспорта: ");
+    PersonID teacher_id{series, number};
+
+    std::string first_name = ReadString("Имя: ");
+    std::string middle_name = ReadString("Отчество: ");
+    std::string last_name = ReadString("Фамилия: ");
+
+    int age = ReadInt("Возраст: ");
+
+    std::string subject = ReadString("Предмет: ");
+    std::string faculty = ReadString("Факультет: ");
+
+    return Teacher(teacher_id, first_name, middle_name, last_name, age, subject, faculty);
+}

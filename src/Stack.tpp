@@ -48,7 +48,7 @@ const T& Stack<T>::Peek() const {
         throw EmptyCollectionError("Pop error: empty collection is given");
     }
 
-    return this->storage->GetLast();
+    return this->storage.GetLast();
 }
 
 //  Map, where, reduce
@@ -56,8 +56,8 @@ template <class T>
 Stack<T> Stack<T>::Map(T (*func)(T)) const {
     Stack<T> result;
 
-    for (int i, i < this->GetLength(); i++) {
-        result.Push(func(this->storage->Get(i)));
+    for (int i; i < this->GetLength(); i++) {
+        result.Push(func(this->storage.Get(i)));
     }
 
     return result;
