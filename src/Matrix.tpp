@@ -6,7 +6,7 @@
 #include "Matrix.hpp"
 
 
-// Конструкторы RectangularMatrix
+// Внутренние методы
 template <class T>
 void RectangularMatrix<T>::check_row_index(int row_index) const {
     if (row_index >= this->rows || row_index < 0) {
@@ -21,6 +21,7 @@ void RectangularMatrix<T>::check_col_index(int col_index) const {
     }
 }
 
+// Конструкторы RectangularMatrix
 template <class T>
 RectangularMatrix<T>::RectangularMatrix() : storage(), rows(0), cols(0) {}
 
