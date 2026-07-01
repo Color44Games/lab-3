@@ -17,6 +17,7 @@ public:
     virtual const T& GetFirst() const;
     virtual const T& GetLast() const;
     virtual Sequence<T>* GetSubsequence(int start_index, int end_index) const;
+    IEnumerator<T>* GetEnumerator() const override = 0;
 
     // Виртуальные конструкторы из ICollection
     Sequence<T>* CreateEmpty() const override = 0;

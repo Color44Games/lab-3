@@ -11,6 +11,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#undef GetMessage
 #endif
 
 // Глобальные счетчики числа тестов
@@ -316,6 +317,11 @@ void TestMatrix_MultiplyCol() {
 // ЗАПУСК ТЕСТОВ
 // ============================================================================
 int main() {
+#ifdef _WIN32
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
+#endif
+
     std::cout << "=== Тестирование Стека ===" << std::endl;
     TestStack_PushPop();
     TestStack_Peek();
